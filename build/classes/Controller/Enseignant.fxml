@@ -3,10 +3,11 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,16 +16,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="479.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Enseignant">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Enseignant">
    <children>
-      <Pane prefHeight="479.0" prefWidth="152.0" style="-fx-background-color: #6D071A;">
+      <Pane prefHeight="600.0" prefWidth="271.0" style="-fx-background-color: #1D2026;">
          <children>
-            <Label layoutX="28.0" layoutY="11.0" text="Dashboard" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <GridPane layoutY="68.0" prefHeight="89.0" prefWidth="152.0">
+            <GridPane layoutX="243.0" layoutY="345.0" prefHeight="89.0" prefWidth="152.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="76.0" />
               </columnConstraints>
@@ -33,50 +29,126 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="152.0" text="Enseignants" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" text="Classes" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Cours" GridPane.rowIndex="2" />
-               </children>
-            </GridPane>
-            <GridPane layoutY="157.0" prefHeight="90.0" prefWidth="152.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Statistiques" />
-               </children>
             </GridPane>
          </children></Pane>
-      <JFXButton fx:id="ajoutEnseignant" layoutX="437.0" layoutY="30.0" onAction="#ajouter" text="Ajouter" />
-      <JFXTextField fx:id="prenom" layoutX="255.0" layoutY="70.0" />
-      <Label layoutX="193.0" layoutY="55.0" text="Nom" />
-      <Label layoutX="186.0" layoutY="85.0" text="Prenom" />
-      <TableView fx:id="tv_enseignant" layoutX="166.0" layoutY="230.0" onMouseClicked="#afficheImage" prefHeight="231.0" prefWidth="433.0">
+      <JFXButton fx:id="ajoutEnseignant" disable="true" layoutX="580.0" layoutY="109.0" onAction="#ajouter" prefHeight="25.0" prefWidth="64.0" text="Ajouter" />
+      <JFXTextField fx:id="prenom" focusTraversable="false" layoutX="430.0" layoutY="159.0" onKeyReleased="#controle_p" onMouseReleased="#controle_prenom" />
+      <Label layoutX="323.0" layoutY="137.0" text="Nom" />
+      <Label layoutX="324.0" layoutY="173.0" text="Prenom" />
+      <TableView fx:id="tv_enseignant" layoutX="300.0" layoutY="324.0" onMouseClicked="#afficheImage" prefHeight="258.0" prefWidth="503.0">
         <columns>
             <TableColumn fx:id="id" prefWidth="75.0" visible="false" />
-            <TableColumn fx:id="tc_username" prefWidth="76.0" text="Username" />
-          <TableColumn fx:id="tc_nom" prefWidth="117.0" text="Nom" />
-          <TableColumn fx:id="tc_prenom" prefWidth="102.0" text="Prenom" />
-            <TableColumn fx:id="tc_mail" prefWidth="135.0" text="Adresse Mail" />
-            <TableColumn fx:id="tc_image" prefWidth="75.0" />
+            <TableColumn fx:id="tc_username" prefWidth="111.0" text="Username" />
+          <TableColumn fx:id="tc_nom" prefWidth="120.0" text="Nom" />
+          <TableColumn fx:id="tc_prenom" prefWidth="116.0" text="Prenom" />
+            <TableColumn fx:id="tc_mail" prefWidth="157.0" text="Adresse Mail" />
+            <TableColumn fx:id="tc_image" minWidth="1.0" prefWidth="5.0" />
         </columns>
       </TableView>
-      <JFXButton fx:id="supprimer" layoutX="672.0" layoutY="292.0" onAction="#supprimer" text="Supprimer" />
-      <JFXTextField fx:id="nom" layoutX="255.0" layoutY="42.0" />
-      <JFXTextField fx:id="mail" layoutX="255.0" layoutY="97.0" />
-      <Label layoutX="170.0" layoutY="114.0" text="Addresse Mail" />
-      <Label layoutX="171.0" layoutY="138.0" text="Mot de passe" />
-      <JFXPasswordField fx:id="password" layoutX="254.0" layoutY="122.0" />
-      <Label layoutX="182.0" layoutY="26.0" text="Username" />
-      <JFXTextField fx:id="tf_image" layoutX="276.0" layoutY="158.0" />
-      <JFXButton fx:id="ajoutphoto" layoutX="160.0" layoutY="161.0" onAction="#ajouterphoto" prefHeight="25.0" prefWidth="125.0" text="Ajouter une photo" />
-      <JFXTextField fx:id="username" layoutX="255.0" layoutY="19.0" />
-      <ImageView fx:id="image_view" fitHeight="221.0" fitWidth="286.0" layoutX="492.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton fx:id="supprimer" layoutX="811.0" layoutY="387.0" onAction="#supprimer" prefHeight="25.0" prefWidth="75.0" text="Supprimer" />
+      <JFXTextField fx:id="nom" layoutX="428.0" layoutY="123.0" onKeyReleased="#controle_n" onMouseReleased="#controle_nom" />
+      <JFXTextField fx:id="mail" layoutX="430.0" layoutY="193.0" onKeyReleased="#controle_mail" onMouseReleased="#controle_m" />
+      <Label layoutX="324.0" layoutY="208.0" text="Addresse Mail" />
+      <Label layoutX="325.0" layoutY="240.0" text="Mot de passe" />
+      <JFXPasswordField fx:id="password" layoutX="430.0" layoutY="224.0" onKeyReleased="#controle_mpd" onMouseReleased="#controle_md" />
+      <Label layoutX="321.0" layoutY="104.0" text="Username" />
+      <JFXTextField fx:id="tf_image" layoutX="431.0" layoutY="260.0" />
+      <JFXButton fx:id="ajoutphoto" layoutX="309.0" layoutY="273.0" onAction="#ajouterphoto" prefHeight="25.0" prefWidth="125.0" text="Ajouter une photo" />
+      <JFXTextField fx:id="username" layoutX="428.0" layoutY="90.0" onKeyReleased="#controle_user" onMouseReleased="#controle_username" />
+      <ImageView fx:id="image_view" fitHeight="227.0" fitWidth="233.0" layoutX="653.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="mail_c" layoutX="433.0" layoutY="220.0" prefHeight="17.0" prefWidth="170.0" textFill="#ee0a0a">
+         <font>
+            <Font size="9.0" />
+         </font></Label>
+      <Label fx:id="mdp_c1" layoutX="433.0" layoutY="250.0" prefHeight="17.0" prefWidth="271.0" textFill="#ee0a0a">
+         <font>
+            <Font size="9.0" />
+         </font></Label>
+      <AnchorPane layoutX="270.0" layoutY="-1.0" prefHeight="82.0" prefWidth="634.0" style="-fx-background-color: #CACFD2;">
+         <children>
+            <Label layoutX="29.0" layoutY="8.0" text="Espace Admin" textFill="#363636">
+               <font>
+                  <Font name="Javanese Text" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label fx:id="lab1" layoutX="436.0" layoutY="117.0" prefHeight="8.0" prefWidth="134.0" textFill="RED">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Label fx:id="lab2" layoutX="436.0" layoutY="150.0" prefHeight="13.0" prefWidth="134.0" textFill="RED">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Label fx:id="lab3" layoutX="436.0" layoutY="187.0" prefHeight="13.0" prefWidth="134.0" textFill="RED">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="14.0" layoutY="275.0" prefHeight="130.0" prefWidth="170.0" translateX="50.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <JFXButton onAction="#goArchive" prefHeight="36.0" prefWidth="146.0" text="Les Cours archivés" textAlignment="JUSTIFY" textFill="#dad0d0">
+               <font>
+                  <Font name="MS Reference Specialty" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#gostat" prefHeight="36.0" prefWidth="158.0" text="Statistiques des cours" textAlignment="JUSTIFY" textFill="#dad0d0" GridPane.rowIndex="1">
+               <font>
+                  <Font name="MS Reference Specialty" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </GridPane>
+      <GridPane layoutX="14.0" layoutY="134.0" prefHeight="137.0" prefWidth="170.0" translateX="50.0">
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <JFXButton onAction="#goEnseignant" prefHeight="31.0" prefWidth="176.0" text="Gestion des enseignants" textFill="#dad0d0">
+               <font>
+                  <Font name="MS Reference Specialty" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton onAction="#goClasse" prefHeight="31.0" prefWidth="146.0" text="Gestion des classes" textAlignment="JUSTIFY" textFill="#dad0d0" GridPane.rowIndex="1">
+               <font>
+                  <Font name="MS Reference Specialty" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXButton onAction="#goCours" prefHeight="29.0" prefWidth="134.0" text="Gestion des cours" textAlignment="JUSTIFY" textFill="#dad0d0" GridPane.rowIndex="2">
+               <font>
+                  <Font name="MS Reference Specialty" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+      </GridPane>
+      <Label layoutX="13.0" layoutY="22.0" prefHeight="132.0" prefWidth="226.0" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="Javanese Text" size="48.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="237.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/icons8-alignement-justifier-32.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

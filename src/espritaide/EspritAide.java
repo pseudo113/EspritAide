@@ -22,11 +22,17 @@ import javafx.stage.Stage;
 public class EspritAide extends Application {
      @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Controller/Cours.fxml"));
+                FXMLLoader loader = new FXMLLoader();
+                stage.setTitle("Espirt entreaide");
+
+        Parent root = FXMLLoader.load(getClass().getResource("/Controller/Enseignant.fxml"));
+               
+        
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-         ;       
+         ;      
     }
 
     /**

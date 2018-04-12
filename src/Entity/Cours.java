@@ -1,17 +1,33 @@
 package Entity;
 
+import java.util.Date;
+
 public class Cours {
 
-    int id ;
-    int id_user ;
-    int id_class ;
-    String type ;
-    String nom ;
-    String image_name ;
-    String module ;
+   private int id ;
+  private  int id_user ;
+   private Classe id_class ;
+   private String type ;
+   private String nom ;
+   private String image_name ;
+   private String module ;
+   private Date datecreation;
 
-    public Cours( int id_user, int id_class, String type, String nom, String image_name, String module) {
-      
+    public Cours() {
+    }
+
+    public Cours(int id, int id_user, String type, String nom, String image_name, String module, Date datecreation) {
+        this.id = id;
+        this.id_user = id_user;
+        this.type = type;
+        this.nom = nom;
+        this.image_name = image_name;
+        this.module = module;
+        this.datecreation = datecreation;
+    }
+    
+
+    public Cours(int id_user, Classe id_class, String type, String nom, String image_name, String module) {
         this.id_user = id_user;
         this.id_class = id_class;
         this.type = type;
@@ -19,6 +35,25 @@ public class Cours {
         this.image_name = image_name;
         this.module = module;
     }
+
+    public Cours(int id, int id_user, String type, String nom, String image_name, String module) {
+        this.id = id;
+        this.id_user = id_user;
+
+        this.type = type;
+        this.nom = nom;
+        this.image_name = image_name;
+        this.module = module;
+    }
+
+   
+    
+
+   
+
+    
+    
+   
 
     
     
@@ -47,13 +82,15 @@ public class Cours {
         this.id_user = id_user;
     }
 
-    public int getId_class() {
+    public Classe getId_class() {
         return id_class;
     }
 
-    public void setId_class(int id_class) {
+    public void setId_class(Classe id_class) {
         this.id_class = id_class;
     }
+
+  
 
     public String getType() {
         return type;
@@ -79,6 +116,14 @@ public class Cours {
 
     public void setImage_name(String image_name) {
         this.image_name = image_name;
+    }
+
+    public Date getDatecreation() {
+        return datecreation;
+    }
+
+    public void setDatecreation(Date datecreation) {
+        this.datecreation = datecreation;
     }
 
 

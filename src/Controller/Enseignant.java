@@ -30,15 +30,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 import utils.Password;
 
 /**
@@ -85,6 +96,16 @@ public class Enseignant implements Initializable {
     
     @FXML
     private TableColumn<?, ?> tc_image;
+    @FXML
+    private Label mail_c;
+    @FXML
+    private Label mdp_c1;
+    @FXML
+    private Label lab1;
+    @FXML
+    private Label lab2;
+    @FXML
+    private Label lab3;
      @FXML
     private void ajouterphoto(ActionEvent event) {
          FileChooser fileChooser = new FileChooser();
@@ -139,6 +160,17 @@ public class Enseignant implements Initializable {
          password.clear();
          tf_image.clear();
          tableUpdateC();
+         TrayNotification tray = new TrayNotification("succes", "succes ",NotificationType.SUCCESS);
+   javafx.scene.image.Image logo = new javafx.scene.image.Image("Ressources/logo.png");
+   
+        
+    
+        tray.setTitle("EspritAide.");
+        tray.setImage(logo);
+        tray.setMessage("Enseignant ajouté ");
+        tray.setRectangleFill(Paint.valueOf("#990000"));
+        tray.setAnimationType(AnimationType.SLIDE);
+        tray.showAndDismiss(Duration.seconds(4));
         
     }
     public void tableUpdateC() {
@@ -198,6 +230,299 @@ public class Enseignant implements Initializable {
         String a = tv_enseignant.getSelectionModel().getSelectedItem().getImagename();
         image_view.setImage(new Image(a));
     }
+
+    @FXML
+    private void controle_mail(KeyEvent event) {
+        String pattern = "^(.+)@(.+)$";
+    String mdp = mail.getText();
     
+     if((mail.getText().equals("")))
+            {mail_c.setText("Vous devez ecrire une Adresse-mail !");
+            mail_c.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else{ lab1.setText("");
+     }
+    
+        if(!mdp.matches(pattern))
+        {
+            mail_c.setText("Email invalide !!!");
+            ajoutEnseignant.setDisable(true);
+            mail_c.setTextFill(Color.web("#C70039 "));
+        }
+        
+        else
+        {
+         
+         mail_c.setText("");}
+        
+
+                    
   
+       
+        
+        
+        
+    }
+    
+    
+    @FXML
+    private void controle_m(MouseEvent event) {
+          String u=mail.getText();
+   
+    if((mail.getText().equals("")))
+            {mail_c.setText("Vous devez ecrire une Adresse-mail !");
+            mail_c.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+   
+    
+    
+        
+     
+    }
+
+    @FXML
+    private void controle_mpd(KeyEvent event) {
+    String pattern1 = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+    String pattern2 = "^[a-zA-Z]*$";
+ String pattern3 = "^(.+)@(.+)$";
+ 
+    String mdp = password.getText();
+     String uu=username.getText();
+   String uuu = nom.getText();
+String uuuu = prenom.getText();
+ String mdpp = mail.getText();
+ 
+ 
+    
+     if((password.getText().equals("")))
+            {mdp_c1.setText("Vous devez ecrire un Mot de passe !");
+            mdp_c1.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else{ lab1.setText("");
+    }
+        if(!mdp.matches(pattern1))
+        {
+            mdp_c1.setText("Chiffres + Lettres(Maj/Min)+ @,#,$,%,^,&,+,= !!!");
+            mdp_c1.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+           // ajoutEnseignant.setVisible(false);
+        }
+        else
+        {
+            
+    mdp_c1.setText("");}
+        
+    
+    if(mdp.matches(pattern1)&&
+(uu.matches(pattern2))&&
+     (uuu.matches(pattern2))&&               
+    (uuuu.matches(pattern2))&&
+    (mdpp.matches(pattern3)))
+            
+    {
+        ajoutEnseignant.setDisable(false);}
+    else{
+        ajoutEnseignant.setDisable(true);}
+    }
+    
+     @FXML
+    private void controle_md(MouseEvent event) {
+           String u=password.getText();
+   
+    if((password.getText().equals("")))
+            {mdp_c1.setText("Vous devez ecrire un Mot de passe !");
+            mdp_c1.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+    else{ ajoutEnseignant.setDisable(false);}
+    }
+    
+    
+
+   
+
+    
+    
+    @FXML
+    private void controle_username(MouseEvent event) {       
+    String u=username.getText();
+   
+    if((username.getText().equals("")))
+            {lab1.setText("Vous devez choisir un username !");
+            lab1.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else                  
+        {lab1.setText("");
+         }
+    }
+            
+        
+    
+        @FXML
+    private void controle_user(KeyEvent event) {
+          String u=username.getText();
+   
+    if((username.getText().equals("")))
+            {lab1.setText("Vous devez choisir un username !");
+            lab1.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else{ lab1.setText("");
+              
+    }
+    
+        String pattern = "^[a-zA-Z]*$";
+    String uu = username.getText();
+        if(!uu.matches(pattern))
+      {lab1.setText("Vous ne devez pas saisir des caractères speciaux");
+            lab1.setTextFill(Color.web("#C70039  "));
+      ajoutEnseignant.setDisable(true);}
+  
+        else{ lab1.setText("");
+        }
+    }
+        
+    
+    
+  @FXML
+    private void controle_nom(MouseEvent event) {
+ String u=nom.getText();
+   
+    if((nom.getText().equals("")))
+            {lab2.setText("Vous devez choisir un nom !");
+            lab2.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else                  
+        {lab2.setText("");
+       }
+    }
+    
+    
+    
+    
+    
+    
+    @FXML
+    private void controle_prenom(MouseEvent event) {
+       String u=prenom.getText();
+   
+    if((prenom.getText().equals("")))
+            {lab3.setText("Vous devez choisir un prenom !");
+            lab3.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else                  
+        {lab3.setText("");
+         }
+    
+    
+    }
+
+
+    @FXML
+    private void controle_n(KeyEvent event) {
+                  String u=nom.getText();
+   
+    if((nom.getText().equals("")))
+            {lab2.setText("Vous devez choisir un nom !");
+            lab2.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else{ lab2.setText("");
+     }
+    
+        String pattern = "^[a-zA-Z]*$";
+    String uu = nom.getText();
+        if(!uu.matches(pattern))
+      {lab2.setText("Vous ne devez pas saisir des caractères speciaux");
+            lab2.setTextFill(Color.web("#C70039  "));
+      ajoutEnseignant.setDisable(true);}
+  
+        else{ lab2.setText("");
+       }
+    }
+
+    @FXML
+    private void controle_p(KeyEvent event) {
+          String u=prenom.getText();
+   
+    if((prenom.getText().equals("")))
+            {lab3.setText("Vous devez choisir un prenom !");
+            lab3.setTextFill(Color.web("#C70039  "));
+            ajoutEnseignant.setDisable(true);
+            }
+     else{ lab3.setText("");
+     }
+    
+        String pattern = "^[a-zA-Z]*$";
+    String uu = prenom.getText();
+        if(!uu.matches(pattern))
+      {lab3.setText("Vous ne devez pas saisir des caractères speciaux");
+            lab3.setTextFill(Color.web("#C70039  "));
+      ajoutEnseignant.setDisable(true);}
+  
+        else{ lab3.setText("");
+         }
+    }
+
+    @FXML
+    private void gostat(ActionEvent event) throws Exception {
+          Controller.stat chart = new Controller.stat();
+        Node source = (Node) event.getSource();
+        chart.start(new Stage());
+    
+    }
+
+    @FXML
+    private void goArchive(ActionEvent event)  throws IOException {
+           Parent p1 = FXMLLoader.load(getClass().getResource("/Controller/cours_archive.fxml"));
+        Scene test1 = new Scene(p1);
+        Stage App1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        App1.setScene(test1);
+        App1.show();
+    }
+
+    @FXML
+    private void goEnseignant(ActionEvent event)  throws IOException {
+           Parent p1 = FXMLLoader.load(getClass().getResource("/Controller/Enseignant.fxml"));
+        Scene test1 = new Scene(p1);
+        Stage App1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        App1.setScene(test1);
+        App1.show();
+    }
+
+    @FXML
+    private void goClasse(ActionEvent event)  throws IOException {
+           Parent p1 = FXMLLoader.load(getClass().getResource("/Controller/classe.fxml"));
+        Scene test1 = new Scene(p1);
+        Stage App1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        App1.setScene(test1);
+        App1.show();
+    }
+
+   @FXML
+    private void goCours(ActionEvent event) throws IOException {
+           Parent p1 = FXMLLoader.load(getClass().getResource("/Controller/Cours.fxml"));
+        Scene test1 = new Scene(p1);
+        Stage App1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        App1.setScene(test1);
+        App1.show();
+    }
+
+   
+
+
+ 
+    
+
+  
+
+
+
+   
 }

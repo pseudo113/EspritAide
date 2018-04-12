@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.cours_archive">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="280.0" style="-fx-background-color: #1D2026;">
+         <children>
+            <GridPane layoutX="14.0" layoutY="275.0" prefHeight="130.0" prefWidth="170.0" translateX="50.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <JFXButton fx:id="cours_archive" onAction="#goCoursArchiver" prefHeight="31.0" prefWidth="146.0" text="Les Cours archivés" textAlignment="JUSTIFY" textFill="#dad0d0">
+                     <font>
+                        <Font name="MS Reference Specialty" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#gostat" prefHeight="31.0" prefWidth="158.0" text="Statistiques des cours" textAlignment="JUSTIFY" textFill="#dad0d0" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="MS Reference Specialty" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </GridPane>
+            <GridPane layoutX="14.0" layoutY="134.0" prefHeight="137.0" prefWidth="170.0" translateX="50.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <JFXButton onAction="#goEnseignant" prefHeight="31.0" prefWidth="176.0" text="Gestion des enseignants" textFill="#dad0d0">
+                     <font>
+                        <Font name="MS Reference Specialty" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#goClasse" prefHeight="31.0" prefWidth="146.0" text="Gestion des classes" textAlignment="JUSTIFY" textFill="#dad0d0" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="MS Reference Specialty" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#goCours" prefHeight="29.0" prefWidth="134.0" text="Gestion des cours" textAlignment="JUSTIFY" textFill="#dad0d0" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="MS Reference Specialty" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+            </GridPane>
+         </children></Pane>
+      <TableView fx:id="tv_enseignant" layoutX="297.0" layoutY="117.0" onMouseClicked="#showpdf" prefHeight="419.0" prefWidth="606.0">
+        <columns>
+            <TableColumn fx:id="id" prefWidth="75.0" visible="false" />
+            <TableColumn fx:id="tc_nom" prefWidth="97.0" text="Nom du cours" />
+          <TableColumn fx:id="tc_module" prefWidth="73.0" text="Module" />
+            <TableColumn fx:id="tc_type" prefWidth="70.0" text="Type" />
+            <TableColumn fx:id="tc_date_archive" prefWidth="100.0" text="Date d'archive" />
+            <TableColumn fx:id="tc_emplacement" prefWidth="273.0" text="Emplacement fichier" />
+        </columns>
+      </TableView>
+      <JFXDialog fx:id="dialog" layoutX="286.0" layoutY="28.0" prefHeight="60.0" prefWidth="397.0">
+         <children>
+            <AnchorPane fx:id="an" prefHeight="467.0" prefWidth="238.0" />
+         </children>
+      </JFXDialog>
+      <AnchorPane layoutX="280.0" prefHeight="82.0" prefWidth="621.0" style="-fx-background-color: #CACFD2;">
+         <children>
+            <Label layoutX="29.0" layoutY="8.0" text="Espace Admin" textFill="#363636">
+               <font>
+                  <Font name="Javanese Text" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="18.0" layoutY="25.0" prefHeight="132.0" prefWidth="226.0" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="Javanese Text" size="48.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="242.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/icons8-alignement-justifier-32.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -121,6 +121,28 @@ public class ClasseDAO {
              ex.printStackTrace();
          }
          return null; }
+         public Classe getClasseById(int id) {
+        Classe Navire = new Classe();
+        String query = "SELECT * from classe where id=?";
+        try {
+
+            PreparedStatement pst = myConnection.prepareStatement(query);
+            pst.setInt(1, id);
+            ResultSet res = pst.executeQuery();
+            while (res.next()) {
+                Navire.setId(id);
+                Navire.setNiveau(res.getString("niveau"));
+
+                
+               
+
+            }
+            return Navire;
+        } catch (SQLException ex) {
+            System.out.println("no" + ex);
+            return null;
+        }
+    }
         
     }
     
